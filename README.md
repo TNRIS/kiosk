@@ -1,2 +1,1 @@
-# kiosk.tnris.org
-a kiosk app
+kiosk.tnris.org
