@@ -1,14 +1,14 @@
 
-urlObject = {
-  flood {
-    name: "flood",
-    url: "https://map.texasflood.org"
-  },
-  swp17 {
-    name: "swp17",
-    url: "https://2017.texasstatewaterplan.org/statewide"
-  }
-}
+// urlObject = {
+//   flood {
+//     name: "flood",
+//     url: "https://map.texasflood.org"
+//   },
+//   swp17 {
+//     name: "swp17",
+//     url: "https://2017.texasstatewaterplan.org/statewide"
+//   }
+// }
 
 function getUrl(){
     $(document).ready(function() {

@@ -16,17 +16,21 @@
 
 <body>
     <div>
+      <div class="fluid-container">
+        <nav class="navbar">
+          <div>
+            <a href="/">
+              <img id="brand-image" src="css/img/twdb_logo.png" />
+            </a>
+          </div>
+          <div class="hide">
+            <a class="navbar-brand" href="index.html"><img class="back" src="css/img/arrow-circle-left-solid.svg" /> Back to Menu</a>
+          </div>
+        </nav>
+      </div>
 
-    <main role="main">
+      <div id="menu" class="album py-5 bg-light">
 
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">kiosk.</h1>
-          <p>Select one of the applications below.</p>
-        </div>
-      </section>
-
-      <div class="album py-5 bg-light">
         <div class="container-fluid">
 
           <div class="row">
@@ -54,79 +58,13 @@
               </div>
             </div>
 
+            <!-- test card -->
             <div class="col-md-4">
               <div class="card mb-4">
                 <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="app_view.html"><img src="css/img/img-placeholder.png" class="img-fluid" /></a>
-                  </div>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="app_view.html"><img src="css/img/img-placeholder.png" class="img-fluid" /></a>
-                  </div>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="app_view.html"><img src="css/img/img-placeholder.png" class="img-fluid" /></a>
-                  </div>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <img src="css/img/img-placeholder.png" class="img-fluid" />
-                  </div>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <img src="css/img/img-placeholder.png" class="img-fluid" />
-                  </div>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <img src="css/img/img-placeholder.png" class="img-fluid" />
-                  </div>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <img src="css/img/img-placeholder.png" class="img-fluid" />
-                  </div>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <a href="app_view.html"><img src="css/img/img-placeholder.png" class="img-fluid" /></a>
+                  <h5 class="card-title">App name here</h5>
+                  <p class="card-text">Web application description goes here.</p>
                 </div>
               </div>
             </div>
@@ -138,7 +76,7 @@
 
 <script src="js/kiosk.js"></script>
 <!-- handlebars.js -->
-<script src="js/handlebars-v4.0.11.js"></script>
+<!-- <script src="js/handlebars-v4.0.11.js"></script> -->
 <!-- <script src='js/bootstrap/bootstrap.min.js'></script> -->
 <script src='js/jquery-3.3.1.min.js'></script>
 </body>

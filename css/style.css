@@ -4,15 +4,40 @@ body, html {
   height: 100%;
 }
 
-img {
+/* img {
   max-width: 100%;
   height: auto;
+} */
+
+/* #logo {
+  width: 100%;
+  height: auto;
+} */
+
+.hide {
+  display: none;
+}
+
+/*SITE HEADER*/
+.navbar {
+	background-color: #3C5163;
+}
+
+#brand-image {
+  height: 50px;
 }
 
 .back {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  float: right;
+  align-self: auto;
+}
+/* .back {
   width: 40px;
   height: 40px;
-}
+} */
 
 .intrinsic-container {
   position: relative;
