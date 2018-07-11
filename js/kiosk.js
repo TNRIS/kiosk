@@ -8,7 +8,7 @@ const timerIncrement = () => {
   }
 }
 
-$(document).ready(function () {
+$(document.iframe).ready(function () {
   //Increment the idle time counter every second.
   const idleInterval = setInterval(timerIncrement, 1000); // 1 second
 

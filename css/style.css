@@ -10,8 +10,22 @@ iframe {
   width: 100%;
 }
 
-a,p,h3 {
+p {
   font-family: 'Montserrat', sans-serif;
+}
+
+a {
+  font-family: 'Montserrat', sans-serif;
+}
+
+a.noDeco:link {
+  color: #000000;
+  text-decoration: none;
+}
+
+a.noDeco:visited {
+  color: #000000;
+  text-decoration: none;
 }
 
 /*SITE HEADER*/
