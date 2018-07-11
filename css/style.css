@@ -6,16 +6,12 @@ body, html {
 
 iframe {
   border: 0;
-  height: 92%;
+  height: 93%;
   width: 100%;
 }
 
-.hide {
-  display: none;
-}
-
-.show {
-  display: block;
+a,p,h3 {
+  font-family: 'Montserrat', sans-serif;
 }
 
 /*SITE HEADER*/
@@ -33,8 +29,9 @@ iframe {
 
 .twdb {
   color: white;
+  text-shadow: 5px 5px 10px #262626;
 }
 
 .twdb:hover {
-  color: #e6e6e6;
+  color: #cccccc;
 }

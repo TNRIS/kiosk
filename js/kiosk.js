@@ -23,7 +23,6 @@ const appObj = {
 
 const switchToIframe = (e) => {
   const url = appObj[e];
-
   const window = document.createElement("iframe");
   window.src = url;
   document.body.appendChild(window);
