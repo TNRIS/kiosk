@@ -15,11 +15,14 @@
   <!-- Google fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
+  <!-- jQuery -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+
 </head>
 
 <body>
 
-  <div id="my-nav" class="fluid-container">
+  <div id="my-nav" class="container-fluid">
     <nav class="navbar fixed-bottom">
       <div id="twdb-name" style="display:block">
         <a class="navbar-brand twdb" href="#"><img id="brand-image" src="css/img/twdb_logo.png" /> Texas Water Development Board</a>
@@ -31,25 +34,24 @@
   </div>
 
   <div id="card-menu" class="album py-5 bg-light">
+
     <div class="container-fluid">
 
-    <!-- <h3>Touch an image to view the application. Touch the back button to return to this menu.</h3> -->
-
       <!-- Row 1 -->
-      <div class="row">
+      <div class="row display-flex">
         <div class="col-lg-6">
-          <div class="shadow card mb-4">
+          <div class="card shadow mb-4">
             <div class="card-body text-center">
-              <a href="#" onclick="switchNav();switchToIframe('flood');"><img src="css/img/img-placeholder.png" class="img-fluid" /></a>
+              <a href="#" onclick="switchNav();switchToIframe('flood');"><img src="css/img/flood-logo.png" class="img-fluid" /></a>
               <p class="card-text"><strong>FLOOD </strong>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
           </div>
         </div>
 
         <div class="col-lg-6">
-          <div class="shadow card mb-4">
+          <div class="card shadow mb-4">
             <div class="card-body text-center">
-              <a href="#" onclick="switchNav();switchToIframe('swp');"><img src="css/img/img-placeholder.png" class="img-fluid" /></a>
+              <a href="#" onclick="switchNav();switchToIframe('swp');"><img src="css/img/swp17-cover-text-small.png" class="img-fluid" /></a>
               <p class="card-text"><strong>SWP </strong>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
           </div>
@@ -57,20 +59,20 @@
       </div>
 
       <!-- Row 2 -->
-      <div class="row">
+      <div class="row display-flex">
         <div class="col-lg-6">
-          <div class="shadow card mb-4">
+          <div class="card shadow mb-4">
             <div class="card-body text-center">
-              <a href="#" onclick="switchNav();switchToIframe('meso');"><img src="css/img/img-placeholder.png" class="img-fluid" /></a>
+              <a href="#" onclick="switchNav();switchToIframe('meso');"><img src="css/img/texMesonet-logo-w300.png" class="img-fluid" /></a>
               <p class="card-text"><strong>MESO </strong>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6 text-center">
-          <div class="shadow card mb-4">
+        <div class="col-lg-6">
+          <div class="card shadow mb-4">
             <div class="card-body text-center">
-              <a href="#" onclick="switchNav();switchToIframe('twdb-site');"><img src="css/img/img-placeholder.png" class="img-fluid" /></a>
+              <a href="#" onclick="switchNav();switchToIframe('twdb-site');"><img src="css/img/twdb-logo-w300.jpg" class="img-fluid" /></a>
               <p class="card-text"><strong>TWDB SITE </strong>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
           </div>
@@ -80,18 +82,18 @@
       <!-- Row 3 -->
       <div class="row">
         <div class="col-lg-6">
-          <div class="shadow card mb-4">
+          <div class="card shadow mb-4">
             <div class="card-body text-center">
-              <a href="#" onclick="switchNav();switchToIframe('tnris');"><img src="css/img/img-placeholder.png" class="img-fluid" /></a>
+              <a href="#" onclick="switchNav();switchToIframe('tnris');"><img src="css/img/tnris-logo-w300.jpg" class="img-fluid" /></a>
               <p class="card-text"><strong>TNRIS SITE </strong>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
           </div>
         </div>
 
         <div class="col-lg-6">
-          <div class="shadow card mb-4">
+          <div class="card shadow mb-4">
             <div class="card-body text-center">
-              <a href="#" onclick="switchNav();switchToIframe('water-data');"><img src="css/img/img-placeholder.png" class="img-fluid" /></a>
+              <a href="#" onclick="switchNav();switchToIframe('water-data');"><img src="css/img/water-data-for-texas-w300.png" class="img-fluid" /></a>
               <p class="card-text"><strong>WATER DATA FOR TX </strong>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
           </div>
@@ -101,18 +103,18 @@
       <!-- Row 4 -->
       <div class="row">
         <div class="col-lg-6">
-          <div class="shadow card mb-4">
+          <div class="card shadow mb-4">
             <div class="card-body text-center">
-              <a href="#" onclick="switchNav();switchToIframe('water-data-interact');"><img src="css/img/img-placeholder.png" class="img-fluid" /></a>
+              <a href="#" onclick="switchNav();switchToIframe('water-data-interact');"><img src="css/img/water-data-interactive.png" class="img-fluid" /></a>
               <p class="card-text"><strong>WATER DATA INTERACTIVE </strong>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
           </div>
         </div>
 
         <div class="col-lg-6">
-          <div class="shadow card mb-4">
+          <div class="card shadow mb-4">
             <div class="card-body text-center">
-              <a href="#" onclick="switchNav();switchToIframe('water-hydro');"><img src="css/img/img-placeholder.png" class="img-fluid" /></a>
+              <a href="#" onclick="switchNav();switchToIframe('water-hydro');"><img src="css/img/water-data-interactive.png" class="img-fluid" /></a>
               <p class="card-text"><strong>WATER DATA HYDRO </strong>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
           </div>
