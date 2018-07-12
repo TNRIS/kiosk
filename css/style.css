@@ -28,10 +28,10 @@ a.noDeco:visited {
   text-decoration: none;
 }
 
-.cover {
-  height: 100%;
-  width: 100%;
-  z-index: 999;
+#nav-url {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 5px 5px 10px #262626;
 }
 
 /*SITE HEADER*/

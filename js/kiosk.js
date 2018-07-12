@@ -5,14 +5,14 @@ let idleTime = 0;
 
 const timerIncrement = () => {
   idleTime = idleTime + 1;
-  if (idleTime > 9) { // 10 min
+  if (idleTime > 2) { // 10 min
     window.location.reload(true);
   }
 }
 
 $(document).ready(function () {
   //Increment the idle time counter every second
-  const idleInterval = setInterval(timerIncrement, 60000); // 1 min
+  const idleInterval = setInterval(timerIncrement, 1000); // 1 min
   //Zero the idle timer on mouse movement
   $(this).mousemove(function (e) {
       idleTime = 0;
@@ -41,7 +41,7 @@ const switchNav = () => {
 const appObj = {
   'flood':'https://map.texasflood.org',
   'swp':'https://2017.texasstatewaterplan.org',
-  'meso':'https://www.texmesonet.org/Viewer/?',
+  'meso':'https://www.texmesonet.org/Viewer',
   'twdb-site':'https://www.twdb.texas.gov',
   'tnris':'https://tnris.org',
   'water-data':'https://waterdatafortexas.org',
@@ -50,9 +50,17 @@ const appObj = {
 }
 
 // create iframe using app url from appObj and append to body
+// dynamically insert url of iframed app as text on right side of navbar
 const switchToIframe = (e) => {
+  // create iframe
   const url = appObj[e];
   const window = document.createElement("iframe");
   window.src = url;
   document.body.appendChild(window);
+
+  // insert url text
+  const urlDiv = document.getElementById("nav-url");
+  urlDiv.style.display = "block";
+  const urlText = document.createTextNode(url);
+  urlDiv.appendChild(urlText)
 }
