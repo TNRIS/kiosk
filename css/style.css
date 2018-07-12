@@ -56,12 +56,12 @@ a.noDeco:visited {
   margin-bottom: 40px;
 }
 
-.twdb {
+.nav-text {
   color: white;
   text-shadow: 5px 5px 10px #262626;
 }
 
-.twdb:hover {
+.nav-text:hover {
   color: #cccccc;
 }
 

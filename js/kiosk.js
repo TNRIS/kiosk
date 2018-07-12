@@ -1,16 +1,18 @@
-// refresh page every 5 min unless active
+// refresh page every 10 min unless home card menu active
+// ** app iframe does not currently recognize user activity/events
+// ** if user active within iframe app, refresh will still occur every 10 min
 let idleTime = 0;
 
 const timerIncrement = () => {
   idleTime = idleTime + 1;
-  if (idleTime > 60) { // 60 seconds
-    window.location.reload();
+  if (idleTime > 4) { // 5 secs
+    window.location.reload(true);
   }
 }
 
-$(document.iframe).ready(function () {
+$(document).ready(function () {
   //Increment the idle time counter every second
-  const idleInterval = setInterval(timerIncrement, 1000); // 1 second
+  const idleInterval = setInterval(timerIncrement, 1000); // 1 sec
   //Zero the idle timer on mouse movement
   $(this).mousemove(function (e) {
       idleTime = 0;
@@ -22,15 +24,17 @@ $(document.iframe).ready(function () {
 
 // switch bottom navigation bar and set card menu to display:none
 const switchNav = () => {
-  const twdbName = document.getElementById("twdb-name");
   const backToMenu = document.getElementById("back-to-menu");
   const cardMenu = document.getElementById("card-menu");
+  const navLink = document.getElementById("nav-link");
+  const navText = document.createTextNode(" Back to Menu");
 
-  if (backToMenu.style.display === "none") {
-    backToMenu.style.display = "block";
-    twdbName.style.display = "none";
-    cardMenu.style.display = "none";
-  }
+  // remove card menu to make room for app iframe
+  cardMenu.style.display = "none";
+  // insert home index.html link for back nav option
+  navLink.setAttribute("href", "index.html");
+  // insert text on navbar for back nav option
+  navLink.appendChild(navText);
 }
 
 // object of app urls to be used in switchToIframe function
@@ -46,15 +50,8 @@ const appObj = {
 }
 
 // create iframe using app url from appObj and append to body
-// also create empty div over iframe to allow user events to be recognized in refresh function above
 const switchToIframe = (e) => {
-  // const trick = document.createElement("div");
-  // trick.setAttribute("class", "cover");
-  // console.log(trick);
-  // document.body.appendChild(trick);
-
   const url = appObj[e];
-  // console.log(document.body);
   const window = document.createElement("iframe");
   window.src = url;
   document.body.appendChild(window);
