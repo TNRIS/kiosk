@@ -3,16 +3,15 @@ let idleTime = 0;
 
 const timerIncrement = () => {
   idleTime = idleTime + 1;
-  if (idleTime > 10) { // 20 minutes
+  if (idleTime > 60) { // 60 seconds
     window.location.reload();
   }
 }
 
 $(document.iframe).ready(function () {
-  //Increment the idle time counter every second.
+  //Increment the idle time counter every second
   const idleInterval = setInterval(timerIncrement, 1000); // 1 second
-
-  //Zero the idle timer on mouse movement.
+  //Zero the idle timer on mouse movement
   $(this).mousemove(function (e) {
       idleTime = 0;
   });
@@ -47,8 +46,15 @@ const appObj = {
 }
 
 // create iframe using app url from appObj and append to body
+// also create empty div over iframe to allow user events to be recognized in refresh function above
 const switchToIframe = (e) => {
+  // const trick = document.createElement("div");
+  // trick.setAttribute("class", "cover");
+  // console.log(trick);
+  // document.body.appendChild(trick);
+
   const url = appObj[e];
+  // console.log(document.body);
   const window = document.createElement("iframe");
   window.src = url;
   document.body.appendChild(window);

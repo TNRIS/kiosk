@@ -28,6 +28,12 @@ a.noDeco:visited {
   text-decoration: none;
 }
 
+.cover {
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+
 /*SITE HEADER*/
 .navbar {
 	background-color: #3C5163;
