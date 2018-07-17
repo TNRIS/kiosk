@@ -26,4 +26,5 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 Command flags to run Chromium in kiosk mode and without web security are very important for this project to work properly. Kiosk mode prevents users from being able to use the browser as they would on their own machines, which would allow them to type in any url and browse the internet. We do not want this ability for users. Additionally, developers cannot normally iterate through or traverse an iframe's html elements with javascript due to security protocols. But, for this very specific purpose, we needed this ability to prevent users from clicking links that may open new tabs. If this happened, the user would be stuck with no ability to exit the new tab since the navigation bar would be gone and the traditional browser navigation menus are absent. Disabling web security in Chromium allows for traversing an iframe's html elements and preventing links to be opened in new tabs.
 
 The command flags needed for disabling web security and launching Chromium in kiosk mode are:
+
 `chromium-browser --kiosk --disable-web-security --user-data-dir`
