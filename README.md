@@ -18,6 +18,6 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 #### Kiosk
 * [Ubuntu 18.04](http://releases.ubuntu.com/releases/18.04/)
 * [Chromium](https://www.chromium.org/Home)
-* [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)
+* [Bash](https://www.gnu.org/software/bash/)
 * [Cron](https://en.wikipedia.org/wiki/Cron)
 * [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc?hl=en-US)
