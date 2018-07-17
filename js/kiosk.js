@@ -1,11 +1,11 @@
-// refresh page every 10 min unless home card menu active
+// refresh page every 5 min unless home card menu active
 // ** app iframe does not currently recognize user activity/events
 // ** if user active within iframe app, refresh will still occur every 10 min
 let idleTime = 0;
 
 const timerIncrement = () => {
   idleTime = idleTime + 1;
-  if (idleTime > 9) { // 10 min
+  if (idleTime > 4) { // 5 min
     window.location.reload(true);
   }
 }
@@ -49,18 +49,34 @@ const appObj = {
   'water-hydro':'https://waterdatafortexas.org/coastal/hydrology'
 }
 
-// create iframe using app url from appObj and append to body
-// dynamically insert url of iframed app as text on right side of navbar
+// 1. create iframe using app url from appObj and append to body
+// 2. iterate through iframe and remove a tag attribute target=_blank to stop new tabs from opening
+// 3. dynamically insert url of iframed app as text on right side of navbar
 const switchToIframe = (e) => {
   // create iframe
   const url = appObj[e];
-  const window = document.createElement("iframe");
-  window.src = url;
-  document.body.appendChild(window);
+  const appWindow = document.createElement("iframe");
+  appWindow.id = "window";
+  appWindow.src = url;
+  document.body.appendChild(appWindow);
 
-  // insert url text
+  // iterate all anchor tags in iframe and prevent those with target=_blank / new tabs
+  $("#window").on('load',function () {
+  const iframe_doc = $("#window").contents().find('a');
+  console.log(iframe_doc);
+
+  iframe_doc.each(function() {
+    if ($(this).attr('target') === '_blank') {
+      console.log(this);
+      $(this).removeAttr('target');
+    };
+  });
+});
+
+  // insert url text of iframed app
   const urlDiv = document.getElementById("nav-url");
   urlDiv.style.display = "block";
   const urlText = document.createTextNode(url);
-  urlDiv.appendChild(urlText)
+  urlDiv.appendChild(urlText);
+
 }
