@@ -85,7 +85,7 @@ const switchToIframe = (e) => {
     $(iframe_body).on('click', function () {
       let iframe_doc = $("#window").contents().find('a');
       iframe_doc.each(function() {
-        if ($(this).attr('target') === '_blank') {
+        if ($(this).attr('target')) {
           $(this).removeAttr('target');
         };
       });
