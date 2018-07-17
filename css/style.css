@@ -94,9 +94,12 @@ a.noDeco:visited {
   height: 50px;
 }
 
+.back-image {
+  height: 35px;
+}
+
 #card-menu {
   margin-bottom: 40px;
-  /* background-color: #f2f2f2; */
 }
 
 .nav-text {

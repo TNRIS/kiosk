@@ -24,17 +24,24 @@ $(document).ready(function () {
 
 // switch bottom navigation bar and set card menu to display:none
 const switchNav = () => {
-  const backToMenu = document.getElementById("back-to-menu");
+  const navDiv = document.getElementById("twdb-name");
   const cardMenu = document.getElementById("card-menu");
-  const navLink = document.getElementById("nav-link");
-  const navText = document.createTextNode(" Back to Menu");
+  const backLink = document.createElement("a");
+  const backText = document.createTextNode(" Back");
+  const backImage = document.createElement("img");
 
-  // remove card menu to make room for app iframe
+  // remove card menu for app iframe
   cardMenu.style.display = "none";
-  // insert home index.html link for back nav option
-  navLink.setAttribute("href", "index.html");
-  // insert text on navbar for back nav option
-  navLink.appendChild(navText);
+  // insert href link for back nav option & class for text style
+  backLink.setAttribute("href", "javascript:history.back()");
+  backLink.setAttribute("class", "navbar-brand nav-text");
+  // set back image attributes
+  backImage.setAttribute("src", "/css/img/back.png");
+  backImage.setAttribute("class", "back-image");
+  // append back nav elemnts to div
+  backLink.appendChild(backImage);
+  backLink.appendChild(backText);
+  navDiv.appendChild(backLink);
 }
 
 // object of app urls to be used in switchToIframe function
@@ -51,18 +58,20 @@ const appObj = {
 
 // 1. create iframe using app url from appObj and append to body
 // 2. iterate through iframe and remove a tag attribute target=_blank to stop new tabs from opening
-// 3. dynamically insert url of iframed app as text on right side of navbar
+// 3. on click run function again to catch dynamically created react content or similar
+// 4. dynamically insert url of iframed app as text on right side of navbar
 const switchToIframe = (e) => {
-  // create iframe
+  // 1. create iframe using app url from appObj and append to body
   const url = appObj[e];
   const appWindow = document.createElement("iframe");
+
   appWindow.id = "window";
   appWindow.src = url;
   document.body.appendChild(appWindow);
 
-  // iterate all anchor tags in iframe and prevent those with target=_blank / new tabs
+  // 2. iterate through iframe and remove a tag attribute target=_blank to stop new tabs from opening
   $("#window").on('load',function () {
-  let iframe_doc = $("#window").contents().find('a');
+    let iframe_doc = $("#window").contents().find('a');
 
     iframe_doc.each(function() {
       if ($(this).attr('target') === '_blank') {
@@ -70,7 +79,7 @@ const switchToIframe = (e) => {
       };
     });
 
-    // on click run function again for dynamically created react content
+    // 3. on click run function again to catch dynamically created react content or similar
     let iframe_body = $("#window").contents().find('body')[0];
 
     $(iframe_body).on('click', function () {
@@ -83,10 +92,10 @@ const switchToIframe = (e) => {
     });
   });
 
-  // insert url text of iframed app
+  // 4. dynamically insert url of iframed app as text on right side of navbar
   const urlDiv = document.getElementById("nav-url");
+  const urlText = document.createTextNode(appWindow.src);
   urlDiv.style.display = "block";
-  const urlText = document.createTextNode(url);
   urlDiv.appendChild(urlText);
 
 }
