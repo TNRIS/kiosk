@@ -62,16 +62,26 @@ const switchToIframe = (e) => {
 
   // iterate all anchor tags in iframe and prevent those with target=_blank / new tabs
   $("#window").on('load',function () {
-  const iframe_doc = $("#window").contents().find('a');
-  console.log(iframe_doc);
+  let iframe_doc = $("#window").contents().find('a');
 
-  iframe_doc.each(function() {
-    if ($(this).attr('target') === '_blank') {
-      console.log(this);
-      $(this).removeAttr('target');
-    };
+    iframe_doc.each(function() {
+      if ($(this).attr('target') === '_blank') {
+        $(this).removeAttr('target');
+      };
+    });
+
+    // on click run function again for dynamically created react content
+    let iframe_body = $("#window").contents().find('body')[0];
+
+    $(iframe_body).on('click', function () {
+      let iframe_doc = $("#window").contents().find('a');
+      iframe_doc.each(function() {
+        if ($(this).attr('target') === '_blank') {
+          $(this).removeAttr('target');
+        };
+      });
+    });
   });
-});
 
   // insert url text of iframed app
   const urlDiv = document.getElementById("nav-url");
