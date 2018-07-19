@@ -41,6 +41,7 @@
 }
 
 body, html {
+  background: #f8f9fa !important;
   margin: 0;
   padding: 0;
   height: 100%;
