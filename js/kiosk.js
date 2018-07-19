@@ -22,9 +22,10 @@ $(document).ready(function () {
   });
 });
 
-function goBack() {
-  window.history.back();
+const goBack = () => {
+  // window.history.back();
   const iframeWindow = document.getElementById("window");
+  iframeWindow.contentWindow.history.back();
   console.log(iframeWindow.contentWindow.location.href);
   if (iframeWindow.contentWindow.location.href === "https://tnris.org/") {
     console.log("tnris.org");
@@ -35,7 +36,8 @@ function goBack() {
 const switchNav = () => {
   const navDiv = document.getElementById("twdb-name");
   const cardMenu = document.getElementById("card-menu");
-  const backLink = document.createElement("a");
+  const backLink = document.createElement("span");
+
   // const backText = document.createTextNode(" Back");
   const backArrow = document.createElement("i");
   const home = document.createElement("i");
@@ -50,9 +52,9 @@ const switchNav = () => {
   // remove card menu for app iframe
   cardMenu.style.display = "none";
 
-  // insert href link for back nav option & class for text style
+  // insert dummy href link for back nav option, class for text style, & goBack function
   backLink.setAttribute("onclick", "goBack()");
-  // backLink.setAttribute("href", "javascript:window.history.back()");
+  // backLink.setAttribute("href", "#");
   backLink.setAttribute("class", "navbar-brand nav-text");
 
   // set back arrow class attribute for fa
