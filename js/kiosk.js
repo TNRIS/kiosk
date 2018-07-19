@@ -22,14 +22,14 @@ $(document).ready(function () {
   });
 });
 
-const goBack = () => {
-  let iframeWindow = document.getElementById("window");
-  console.log(iframeWindow.contentWindow.location.href);
-  window.history.back();
-  // iframeWindow.contentWindow.history.back();
-  iframeWindow = document.getElementById("window");
-  console.log(iframeWindow.src);
-  console.log(iframeWindow.contentWindow.location.href);
+// const goBack = () => {
+//   let iframeWindow = document.getElementById("window");
+//   console.log(iframeWindow.contentWindow.location.href);
+//   window.history.back();
+//   // iframeWindow.contentWindow.history.back();
+//   iframeWindow = document.getElementById("window");
+//   console.log(iframeWindow.src);
+//   console.log(iframeWindow.contentWindow.location.href);
   // if (iframeWindow.contentWindow.location.href === "https://tnris.org/") {
   //   console.log("tnris.org");
   // }
@@ -40,7 +40,7 @@ const goBack = () => {
   // else {
   //   window.history.back();
   // }
-}
+// }
 
 // switch bottom navigation bar and set card menu to display:none
 const switchNav = () => {
@@ -64,16 +64,16 @@ const switchNav = () => {
   cardMenu.style.display = "none";
 
   // insert dummy href link for back nav option, class for text style, & goBack function
-  backLink.setAttribute("onclick", "goBack()");
+  // backLink.setAttribute("onclick", "goBack()");
   // backLink.setAttribute("href", "#");
-  backLink.setAttribute("class", "navbar-brand nav-text");
+  // backLink.setAttribute("class", "navbar-brand nav-text");
 
   // set back arrow class attribute for fa
   backArrow.setAttribute("class", "fa fa-2x fa-angle-double-left");
 
   // append back nav elemnts to div
   navLink.appendChild(home);
-  backLink.appendChild(backArrow);
+  // backLink.appendChild(backArrow);
   // backLink.appendChild(backText);
   navDiv.appendChild(backLink);
 
