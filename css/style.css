@@ -41,10 +41,14 @@
 }
 
 body, html {
-  background-color: #f8f9fa !important;
+  background-color: #000000 !important;
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+#card-menu {
+  background-color: #000000 !important;
 }
 
 #window {
