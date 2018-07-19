@@ -48,7 +48,7 @@ body, html {
 
 #window {
   border: 0;
-  height: calc(100% - 76px);
+  height: calc(100% - 69px);
   width: 100%;
 }
 
@@ -91,7 +91,7 @@ a.noDeco:visited {
 }
 
 #brand-image {
-  height: 50px;
+  height: 43px;
 }
 
 .back-image {
