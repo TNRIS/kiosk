@@ -23,17 +23,28 @@ $(document).ready(function () {
 });
 
 const goBack = () => {
-  // window.history.back();
-  const iframeWindow = document.getElementById("window");
-  iframeWindow.contentWindow.history.back();
+  let iframeWindow = document.getElementById("window");
   console.log(iframeWindow.contentWindow.location.href);
-  if (iframeWindow.contentWindow.location.href === "https://tnris.org/") {
-    console.log("tnris.org");
-  }
+  window.history.back();
+  // iframeWindow.contentWindow.history.back();
+  iframeWindow = document.getElementById("window");
+  console.log(iframeWindow.src);
+  console.log(iframeWindow.contentWindow.location.href);
+  // if (iframeWindow.contentWindow.location.href === "https://tnris.org/") {
+  //   console.log("tnris.org");
+  // }
+  // if (iframeWindow) {
+  //   iframeWindow.contentWindow.history.back();
+  //   console.log(iframeWindow.contentWindow.location.href);
+  // }
+  // else {
+  //   window.history.back();
+  // }
 }
 
 // switch bottom navigation bar and set card menu to display:none
 const switchNav = () => {
+
   const navDiv = document.getElementById("twdb-name");
   const cardMenu = document.getElementById("card-menu");
   const backLink = document.createElement("span");
