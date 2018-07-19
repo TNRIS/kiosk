@@ -1,27 +1,45 @@
-// refresh page every 5 min unless home card menu active
+// refresh page every 10 min unless home card menu active
 // ** app iframe does not currently recognize user activity/events
 // ** if user active within iframe app, refresh will still occur every 10 min
 let idleTime = 0;
+// let iframe_body = $("#window").contents().find('body')[0];
 
 const timerIncrement = () => {
   idleTime = idleTime + 1;
-  if (idleTime > 4) { // 5 min
+  if (idleTime > 9) { // 10 min
     window.location.reload(true);
   }
 }
 
 $(document).ready(function () {
-  //Increment the idle time counter every second
+  // console.log("document loaded.")
+  // increment the idle time counter every second
   const idleInterval = setInterval(timerIncrement, 60000); // 1 min
-  //Zero the idle timer on mouse movement
+
+  // $(document).on('click', function () {
+  //   // console.log(window.self);
+  //   let frame = $("#window").contents();
+  //   let iframe = document.getElementByTagName('iframe');
+  //   // let frame = $("#window").contents().find('body')[0];
+  //   // let frameChildren = frame.childNodes;
+  //   // $("#window").contents().find('body')[0];
+  //   if (window != top) {
+  //     console.log(frame);
+  //   }
+  // });
+
+  // zero the idle timer on mouse movement
   $(this).mousemove(function (e) {
-      idleTime = 0;
+    idleTime = 0;
   });
+
   $(this).keypress(function (e) {
-      idleTime = 0;
+    idleTime = 0;
   });
+
 });
 
+// BACK BUTTON FUNCTION COMMENTED OUT - WORK IN PROGRESS
 // const goBack = () => {
 //   let iframeWindow = document.getElementById("window");
 //   console.log(iframeWindow.contentWindow.location.href);
@@ -47,18 +65,19 @@ const switchNav = () => {
 
   const navDiv = document.getElementById("twdb-name");
   const cardMenu = document.getElementById("card-menu");
-  const backLink = document.createElement("span");
+  // const backLink = document.createElement("span");
 
-  // const backText = document.createTextNode(" Back");
-  const backArrow = document.createElement("i");
-  const home = document.createElement("i");
-  const brandImage = document.getElementById("brand-image");
+  const homeText = document.createTextNode(" Back to Home");
+  // const backArrow = document.createElement("i");
+  const home = document.getElementById("home");
+  // const brandImage = document.getElementById("brand-image");
   const navLink = document.getElementById("nav-link");
 
   // replace twdb logo with home button
-  brandImage.parentNode.removeChild(brandImage);
+  // brandImage.parentNode.removeChild(brandImage);
   navLink.setAttribute("href", "/");
-  home.setAttribute("class", "fa fa-2x fa-home");
+  // home.setAttribute("class", "fa fa-2x fa-home");
+  $(home).removeClass("fa-disabled");
 
   // remove card menu for app iframe
   cardMenu.style.display = "none";
@@ -67,20 +86,21 @@ const switchNav = () => {
   // backLink.setAttribute("onclick", "goBack()");
   // backLink.setAttribute("href", "#");
   // backLink.setAttribute("class", "navbar-brand nav-text");
+  // homeText.setAttribute("class", "nav-text");
 
   // set back arrow class attribute for fa
-  backArrow.setAttribute("class", "fa fa-2x fa-angle-double-left");
+  // backArrow.setAttribute("class", "fa fa-2x fa-angle-double-left");
 
   // append back nav elemnts to div
   navLink.appendChild(home);
   // backLink.appendChild(backArrow);
-  // backLink.appendChild(backText);
-  navDiv.appendChild(backLink);
+  navLink.appendChild(homeText);
+  navDiv.appendChild(navLink);
 
 }
 
 // object of app urls to be used in switchToIframe function
-const appObj = {
+const urlObj = {
   'flood':'https://map.texasflood.org',
   'swp':'https://2017.texasstatewaterplan.org',
   'meso':'https://www.texmesonet.org/Viewer',
@@ -91,13 +111,25 @@ const appObj = {
   'water-hydro':'https://waterdatafortexas.org/coastal/hydrology'
 }
 
+const textObj = {
+  'flood':'map.texasflood.org',
+  'swp':'texasstatewaterplan.org',
+  'meso':'www.texmesonet.org',
+  'twdb-site':'www.twdb.texas.gov',
+  'tnris':'tnris.org',
+  'water-data':'waterdatafortexas.org',
+  'water-data-interact':'www2.twdb.texas.gov/apps/waterdatainteractive',
+  'water-hydro':'waterdatafortexas.org'
+}
+
 // 1. create iframe using app url from appObj and append to body
 // 2. iterate through iframe and remove a tag attribute target=_blank to stop new tabs from opening
 // 3. on click run function again to catch dynamically created react content or similar
 // 4. dynamically insert url of iframed app as text on right side of navbar
 const switchToIframe = (e) => {
   // 1. create iframe using app url from appObj and append to body
-  const url = appObj[e];
+  const url = urlObj[e];
+  const urlText = textObj[e];
   const appWindow = document.createElement("iframe");
 
   appWindow.id = "window";
@@ -107,7 +139,6 @@ const switchToIframe = (e) => {
   // 2. iterate through iframe and remove a tag attribute target=_blank to stop new tabs from opening
   $("#window").on('load',function () {
     let iframe_doc = $("#window").contents().find('a');
-
     iframe_doc.each(function() {
       if ($(this).attr('target') === '_blank') {
         $(this).removeAttr('target');
@@ -116,7 +147,6 @@ const switchToIframe = (e) => {
 
     // 3. on click run function again to catch dynamically created react content or similar
     let iframe_body = $("#window").contents().find('body')[0];
-
     $(iframe_body).on('click', function () {
       let iframe_doc = $("#window").contents().find('a');
       iframe_doc.each(function() {
@@ -127,10 +157,10 @@ const switchToIframe = (e) => {
     });
   });
 
-  // 4. dynamically insert url of iframed app as text on right side of navbar
+  // 4. dynamically insert simplified url of iframed app as text on right side of navbar
   const urlDiv = document.getElementById("nav-url");
-  const urlText = document.createTextNode(appWindow.src);
+  const urlTextNode = document.createTextNode(urlText);
   urlDiv.style.display = "block";
-  urlDiv.appendChild(urlText);
+  urlDiv.appendChild(urlTextNode);
 
 }

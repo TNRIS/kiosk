@@ -91,8 +91,13 @@ a.noDeco:visited {
   flex-direction: column;
 }
 
-#brand-image {
+/* #brand-image {
   height: 43px;
+} */
+
+.fa-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .back-image {
