@@ -3,14 +3,14 @@ let idleTime = 0;
 
 const timerIncrement = () => {
   idleTime = idleTime + 1;
-  if (idleTime > 2) { // 10 min
+  if (idleTime > 9) { // 10 min
     window.location.reload(true);
   }
 }
 
 $(document).ready(function () {
   // increment the idle time counter every second
-  const idleInterval = setInterval(timerIncrement, 1000); // 1 min
+  const idleInterval = setInterval(timerIncrement, 60000); // 1 min
 
   // zero the idle timer on activity at main menu
   $(this).mousemove(function (e) {
