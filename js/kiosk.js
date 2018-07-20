@@ -67,6 +67,7 @@ const switchNav = () => {
   const cardMenu = document.getElementById("card-menu");
   // const backLink = document.createElement("span");
 
+  const homeSpan = document.createElement("span");
   const homeText = document.createTextNode(" Back to Home");
   // const backArrow = document.createElement("i");
   const home = document.getElementById("home");
@@ -94,12 +95,13 @@ const switchNav = () => {
   // append back nav elemnts to div
   navLink.appendChild(home);
   // backLink.appendChild(backArrow);
-  navLink.appendChild(homeText);
+  homeSpan.appendChild(homeText);
+  navLink.appendChild(homeSpan);
   navDiv.appendChild(navLink);
 
 }
 
-// object of app urls to be used in switchToIframe function
+// app urls for switchToIframe function
 const urlObj = {
   'flood':'https://map.texasflood.org',
   'swp':'https://2017.texasstatewaterplan.org',
@@ -111,6 +113,7 @@ const urlObj = {
   'water-hydro':'https://waterdatafortexas.org/coastal/hydrology'
 }
 
+// simplified url for navbar
 const textObj = {
   'flood':'map.texasflood.org',
   'swp':'texasstatewaterplan.org',
@@ -136,16 +139,16 @@ const switchToIframe = (e) => {
   appWindow.src = url;
   document.body.appendChild(appWindow);
 
-  // 2. iterate through iframe and remove a tag attribute target=_blank to stop new tabs from opening
+  // 2. search iframe and remove all a tag target attributes to stop new tabs from opening
   $("#window").on('load',function () {
     let iframe_doc = $("#window").contents().find('a');
     iframe_doc.each(function() {
-      if ($(this).attr('target') === '_blank') {
+      if ($(this).attr('target')) {
         $(this).removeAttr('target');
       };
     });
 
-    // 3. on click run function again to catch dynamically created react content or similar
+    // 3. on click run function again to catch dynamically created react.js content or similar
     let iframe_body = $("#window").contents().find('body')[0];
     $(iframe_body).on('click', function () {
       let iframe_doc = $("#window").contents().find('a');

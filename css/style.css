@@ -57,6 +57,10 @@ p {
   font-family: 'Montserrat', sans-serif;
 }
 
+#home {
+  margin-right: 5px;
+}
+
 a {
   font-family: 'Montserrat', sans-serif;
 }
