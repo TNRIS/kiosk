@@ -1,34 +1,18 @@
-// refresh page every 10 min unless home card menu active
-// ** app iframe does not currently recognize user activity/events
-// ** if user active within iframe app, refresh will still occur every 10 min
+// REFRESH MAIN MENU PAGE EVERY 10 MIN UNLESS USER ACTIVE
 let idleTime = 0;
-// let iframe_body = $("#window").contents().find('body')[0];
 
 const timerIncrement = () => {
   idleTime = idleTime + 1;
-  if (idleTime > 9) { // 10 min
+  if (idleTime > 2) { // 10 min
     window.location.reload(true);
   }
 }
 
 $(document).ready(function () {
-  // console.log("document loaded.")
   // increment the idle time counter every second
-  const idleInterval = setInterval(timerIncrement, 60000); // 1 min
+  const idleInterval = setInterval(timerIncrement, 1000); // 1 min
 
-  // $(document).on('click', function () {
-  //   // console.log(window.self);
-  //   let frame = $("#window").contents();
-  //   let iframe = document.getElementByTagName('iframe');
-  //   // let frame = $("#window").contents().find('body')[0];
-  //   // let frameChildren = frame.childNodes;
-  //   // $("#window").contents().find('body')[0];
-  //   if (window != top) {
-  //     console.log(frame);
-  //   }
-  // });
-
-  // zero the idle timer on mouse movement
+  // zero the idle timer on activity at main menu
   $(this).mousemove(function (e) {
     idleTime = 0;
   });
@@ -37,6 +21,9 @@ $(document).ready(function () {
     idleTime = 0;
   });
 
+  $(this).click(function (e) {
+    idleTime = 0;
+  });
 });
 
 // BACK BUTTON FUNCTION COMMENTED OUT - WORK IN PROGRESS
@@ -60,7 +47,7 @@ $(document).ready(function () {
   // }
 // }
 
-// switch bottom navigation bar and set card menu to display:none
+// SWITCH BOTTOM NAV BAR AND SET CARD MENU TO DISPLAY = NONE
 const switchNav = () => {
 
   const navDiv = document.getElementById("twdb-name");
@@ -101,7 +88,7 @@ const switchNav = () => {
 
 }
 
-// app urls for switchToIframe function
+// APP URLS FOR SWITCHTOIFRAME FUNCTION
 const urlObj = {
   'flood':'https://map.texasflood.org',
   'swp':'https://2017.texasstatewaterplan.org',
@@ -112,8 +99,7 @@ const urlObj = {
   'water-data-interact':'https://www2.twdb.texas.gov/apps/waterdatainteractive/groundwaterdataviewer',
   'water-hydro':'https://waterdatafortexas.org/coastal/hydrology'
 }
-
-// simplified url for navbar
+// SIMPLIFIED URLS FOR NAVBAR - USED FOR APP REFERENCE
 const textObj = {
   'flood':'map.texasflood.org',
   'swp':'texasstatewaterplan.org',
@@ -125,12 +111,12 @@ const textObj = {
   'water-hydro':'waterdatafortexas.org'
 }
 
-// 1. create iframe using app url from appObj and append to body
-// 2. iterate through iframe and remove a tag attribute target=_blank to stop new tabs from opening
-// 3. on click run function again to catch dynamically created react content or similar
-// 4. dynamically insert url of iframed app as text on right side of navbar
+// 1. CREATE IFRAME USING URLOBJ AND APPEND TO BODY
+// 2. SEARCH IFRAME AND REMOVE <A> ATTRIBUTE TARGET TO PREVENT NEW TABS FROM OPENING
+// 3. ON CLICK RUN FUNCTION AGAIN TO CATCH DYNAMICALLY CREATED REACT.JS CONTENT OR SIMILAR
+// 4. DYNAMICALLY INSERT URL OF IFRAMED APP AS TEXT/LABEL ON RIGHT SIDE OF NAVBAR
 const switchToIframe = (e) => {
-  // 1. create iframe using app url from appObj and append to body
+  // 1.
   const url = urlObj[e];
   const urlText = textObj[e];
   const appWindow = document.createElement("iframe");
@@ -139,7 +125,7 @@ const switchToIframe = (e) => {
   appWindow.src = url;
   document.body.appendChild(appWindow);
 
-  // 2. search iframe and remove all a tag target attributes to stop new tabs from opening
+  // 2.
   $("#window").on('load',function () {
     let iframe_doc = $("#window").contents().find('a');
     iframe_doc.each(function() {
@@ -148,10 +134,10 @@ const switchToIframe = (e) => {
       };
     });
 
-    // 3. on click run function again to catch dynamically created react.js content or similar
+    // 3.
     let iframe_body = $("#window").contents().find('body')[0];
     $(iframe_body).on('click', function () {
-      let iframe_doc = $("#window").contents().find('a');
+      idleTime = 0; // reset idleTime to zero when user clicks in app iframe
       iframe_doc.each(function() {
         if ($(this).attr('target')) {
           $(this).removeAttr('target');
@@ -160,7 +146,7 @@ const switchToIframe = (e) => {
     });
   });
 
-  // 4. dynamically insert simplified url of iframed app as text on right side of navbar
+  // 4.
   const urlDiv = document.getElementById("nav-url");
   const urlTextNode = document.createTextNode(urlText);
   urlDiv.style.display = "block";
