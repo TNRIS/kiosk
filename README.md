@@ -54,10 +54,7 @@ For local development / testing:
       - command = path to clear-chromium-crash.sh bash script (should be `home/clear-chromium-crash.sh`)
 
 ### Cron & Bash
-All cron and bash system scripts are located in **/system-scripts** of this repo. On the kiosk itself, all system scripts are placed in the `/home` directory. The **clear-chromium-crash.sh** and **start-kiosk.sh** scripts are also added to Startup Applications in case the computer is intentionally shutdown, loses power, or is rebooted.
-
-#### Permissions
-To setup the cron task on the kiosk machine, root access is necessary to edit the crontab using `sudo crontab -e`. The sleep script also requires root privileges to run the `rtcwake` command. The sleep script runs, then switches to the regular admin user (in this case user = tnris) using `su` command before running `start-kiosk.sh`.
+All cron and bash system scripts are located in **/system-scripts** of this repo. On the kiosk itself, all system scripts are placed in the `/home` directory. The **clear-chromium-crash.sh** and **start-kiosk.sh** scripts are also added to Startup Applications in case the computer is intentionally shutdown, loses power, or is rebooted. **User Permissions**: To setup the cron task on the kiosk machine, root access is necessary to edit the crontab using the command `sudo crontab -e`. The sleep script also requires root privileges to run the `rtcwake` command. The sleep script runs, then switches to the regular admin user (in this case user is tnris) using `su` command before running `start-kiosk.sh`.
 
 **kiosk-crontab.bak** <br>
 Cron is a Linux utility that allows tasks to be automatically run in the background at regular intervals by the cron daemon. The kiosk uses it everyday at 1830 to kill all Chromium processes and to call the `sleep.sh` Bash script:
