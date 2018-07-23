@@ -8,19 +8,6 @@ This project is a simple static web application combined with a customized syste
 
 The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Beaver operating system installed. Ubuntu 18 was chosen due to it working well out of the box with the kiosk touchscreen. Every day at 1830, a cron task (`/system-scripts/kiosk-crontab.bak`) kills Chromium and calls a Bash script called `sleep.sh`. The sleep script puts the machine to sleep for 12.5 hours, after which it will awaken, switch to user tnris, and call the `start-kiosk.sh` Bash script. This script runs Chromium with the necessary flags/switches needed for the kiosk (see below Cron & Bash section regarding the switches used with more detail). If the kiosk touchscreen is inactive for 15 minutes, a Chromium extension called Photo Screen Saver will show TWDB images stored on a cloud drive as a screen saver until a user interrupts it.
 
-### Web Application Components
-* [GitHub Pages](https://pages.github.com/)
-* [jQuery v3.3.1](https://jquery.com/)
-* [Bootstrap v4.1.1](https://getbootstrap.com/)
-* [Google Fonts - Montserrat](https://fonts.google.com/specimen/Montserrat)
-* [Font Awesome v5.1.1](https://fontawesome.com/)
-* [AWS Route 53](https://aws.amazon.com/route53/)
-
-For local development / testing:
-* [node.js v8.11.1](https://nodejs.org/en/blog/release/v8.11.1/)
-* [http-server v0.11.1](https://www.npmjs.com/package/http-server)
-  - `npm install http-server -g`
-
 ### Kiosk System Components
 * [Dell 9020 Micro](https://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/optiplex-9020-micro-technical-spec-sheet.pdf)
 * [Ubuntu 18.04](http://releases.ubuntu.com/releases/18.04/)
@@ -95,5 +82,33 @@ If Chromium crashes (usually due to rebooting), clear the crash flag so the warn
 sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' snap/chromium/367/.config/chromium/Default/Preferences
 sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' snap/chromium/367/.config/chromium/Default/Preferences
 ```
+### Web Application Components
+* [GitHub Pages](https://pages.github.com/)
+* [jQuery v3.3.1](https://jquery.com/)
+* [Bootstrap v4.1.1](https://getbootstrap.com/)
+* [Google Fonts - Montserrat](https://fonts.google.com/specimen/Montserrat)
+* [Font Awesome v5.1.1](https://fontawesome.com/)
+* [AWS Route 53](https://aws.amazon.com/route53/)
+
+For local development / testing:
+* [node.js v8.11.1](https://nodejs.org/en/blog/release/v8.11.1/)
+* [http-server v0.11.1](https://www.npmjs.com/package/http-server)
+
+### Instructions for Local Development Setup
+1. Install node.js v8.11.1 or the most recent release version is probably fine too. Download [here](https://nodejs.org/en/download/).
+2. npm should be installed with node.js, so just run this command to install the http-server package: `npm install http-server -g`
+3. Clone the TNRIS/kiosk repository with git using the command: `git clone https://github.com/TNRIS/kiosk.git`
+4. CD into the repo using the terminal.
+5. Run the command `http-server` and a server running the app should now be viewable at http://localhost:8080.
+6. *** To view the app exactly as it is meant to run on the kiosk with web security disabled, open a new terminal window (make sure your server running the app at local port 8080 stays running) and type the command: `chromium-browser --disable-web-security --user-data-dir http://localhost:8080`.
+
+**Note:** *** Change the command `chromium-browser` to `chromium` if you've installed the browser using snap / the Ubuntu software center.
+
 ### DNS
 Amazon Web Services (AWS) [Route 53](https://aws.amazon.com/documentation/route53/) is used for the Domain Name System (DNS) web service to register **kiosk.tnris.org**. This is the custom domain for this web application, which is a subdomain of tnris.org.
+
+**Access DNS settings for http://kiosk.tnris.org** :
+  - Login to the TNRIS AWS services console
+  - Under Route53 - Hosted zones - Select tnris.org
+  - Scroll down to kiosk.tnris.org and select the record set
+  - The record set edit options and settings appear on the right-side
