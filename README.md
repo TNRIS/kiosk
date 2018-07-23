@@ -31,27 +31,27 @@ For local development / testing:
 
 ### Instructions for Kiosk Hardware Setup
 1. Install Ubuntu v18.04 Bionic Beaver on the Kiosk machine.
-  - Create a bootable USB stick with  [Windows](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows#0), [Mac](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-macos#0), or [Linux](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu#0).
-  - [Install Ubuntu](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0)
+    - Create a bootable USB stick with  [Windows](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows#0), [Mac](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-macos#0), or [Linux](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu#0).
+    - [Install Ubuntu](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0)
 2. Install Chromium browser using either apt or [snap](https://tutorials.ubuntu.com/tutorial/basic-snap-usage#0) package manager.
-  - The newer snap way: `sudo snap install chromium`
-  - The apt way: `sudo apt install chromium-browser`
-  - **Note:** The method you choose to install chromium will determine the command/path you use in the scripts. Using the apt way = `chromium-browser` calls the browser; the snap way = `chromium` to call the browser. The scripts in this repo used the snap method - `/snap/bin/chromium`.
+    - The newer snap way: `sudo snap install chromium`
+    - The apt way: `sudo apt install chromium-browser`
+    - **Note:** The method you choose to install chromium will determine the command/path you use in the scripts. Using the apt way = `chromium-browser` calls the browser; the snap way = `chromium` to call the browser. The scripts in this repo used the snap method - `/snap/bin/chromium`.
 3. Sign into a Google account so you are able to install extensions to Chromium from the Chrome Store.
 4. Install the [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc) Chromium/Chrome extension from the Chrome Store.
-  - In the extension setup, provide a Google Drive/Photos location of photos for the extension to use.
-  - Set the screen saver to start when idle for 15 minutes; also test transitions and animations in the settings if you desire. Set any other settings you need.
+    - In the extension setup, provide a Google Drive/Photos location of photos for the extension to use.
+    - Set the screen saver to start when idle for 15 minutes; also test transitions and animations in the settings if you desire. Set any other settings you need.
 5. Copy the system scripts `sleep.sh`, `start-kiosk.sh`, and `clear-chromium-crash.sh` into the `/home` directory.
 6. Open terminal, run `sudo crontab -e`, specify which text editor you want to use (nano), paste the command that is in the `kiosk-crontab.bak` file (only the line that isn't commented out) into the crontab.
 7. Open Ubuntu's Startup Applications Preferences (search Ubuntu dash using keyword 'startup').
-  - Create startup app for start-kiosk.sh bash script
-    - choose 'Add'
-    - type in Name = 'start-kiosk' or similar
-    - command = path to start-kiosk.sh bash script (should be `home/start-kiosk.sh`)
-  - Create startup app for clear-chromium-crash.sh bash script
-    - choose 'Add'
-    - type in Name = 'clear-chromium-crash' or similar
-    - command = path to clear-chromium-crash.sh bash script (should be `home/clear-chromium-crash.sh`)
+    - Create startup app for start-kiosk.sh bash script
+      - choose 'Add'
+      - type in Name = 'start-kiosk' or similar
+      - command = path to start-kiosk.sh bash script (should be `home/start-kiosk.sh`)
+    - Create startup app for clear-chromium-crash.sh bash script
+      - choose 'Add'
+      - type in Name = 'clear-chromium-crash' or similar
+      - command = path to clear-chromium-crash.sh bash script (should be `home/clear-chromium-crash.sh`)
 
 ### Cron & Bash
 All cron and bash system scripts are located in **/system-scripts** of this repo. On the kiosk itself, all system scripts are placed in the `/home` directory. The **clear-chromium-crash.sh** and **start-kiosk.sh** scripts are also added to Startup Applications in case the computer is intentionally shutdown, loses power, or is rebooted.
