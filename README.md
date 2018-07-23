@@ -16,7 +16,7 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 * [Cron](https://en.wikipedia.org/wiki/Cron)
 * [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc?hl=en-US)
 
-### Instructions for Kiosk Hardware Setup
+### Instructions for Kiosk Setup
 1. Install Ubuntu v18.04 Bionic Beaver on the Kiosk machine.
     - Create a bootable USB stick with  [Windows](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows#0), [Mac](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-macos#0), or [Linux](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu#0).
     - [Install Ubuntu](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0)
