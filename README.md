@@ -24,7 +24,7 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 2. Install Chromium browser using either apt or [snap](https://tutorials.ubuntu.com/tutorial/basic-snap-usage#0) package manager.
     - The newer snap way: `sudo snap install chromium`
     - The apt way: `sudo apt install chromium-browser`
-    - **Note:** The method you choose to install chromium will determine the command/path you use in the scripts. Using the apt way = `chromium-browser` calls the browser; the snap way = `chromium` to call the browser. The scripts in this repo used the snap method - `/snap/bin/chromium`.
+**Note:** The method you choose to install chromium will determine the command/path you use in the scripts. Using the apt way = `chromium-browser` calls the browser; the snap way = `chromium` to call the browser. The scripts in this repo used the snap method - `/snap/bin/chromium`.
 
 3. Sign into a Google account so you are able to install extensions to Chromium from the Chrome Store.
 
@@ -104,6 +104,7 @@ For local development / testing:
 1. Install node.js v8.11.1 or the most recent release version is probably fine too. Download [here](https://nodejs.org/en/download/).
 
 2. npm should be installed with node.js, so just run this command to install the http-server package:
+
 `npm install http-server -g`
 
 3. Clone the TNRIS/kiosk repository with git using the command: `git clone https://github.com/TNRIS/kiosk.git`
@@ -113,6 +114,7 @@ For local development / testing:
 5. Run the command `http-server` and a server running the app should now be viewable at http://localhost:8080.
 
 6. *** To view the app exactly as it is meant to run on the kiosk with web security disabled, open a new terminal window (make sure your server running the app at local port 8080 stays running) and type the command:
+
 `chromium-browser --disable-web-security --user-data-dir http://localhost:8080`.
 
 **Note:** *** Change the command `chromium-browser` to `chromium` if you've installed the browser using snap / the Ubuntu software center.
