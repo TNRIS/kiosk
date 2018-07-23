@@ -106,7 +106,7 @@ For local development / testing:
 
 2. npm should be installed with node.js, so just run this command to install the http-server package:
 
-`npm install http-server -g`
+    `npm install http-server -g`
 
 3. Clone the TNRIS/kiosk repository with git using the command: `git clone https://github.com/TNRIS/kiosk.git`
 
@@ -116,7 +116,7 @@ For local development / testing:
 
 6. *** To view the app exactly as it is meant to run on the kiosk with web security disabled, open a new terminal window (make sure your server running the app at local port 8080 stays running) and type the command:
 
-`chromium-browser --disable-web-security --user-data-dir http://localhost:8080`.
+    `chromium-browser --disable-web-security --user-data-dir http://localhost:8080`.
 
 **Note:** *** Change the command `chromium-browser` to `chromium` if you've installed the browser using snap / the Ubuntu software center.
 
