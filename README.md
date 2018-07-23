@@ -24,6 +24,7 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 2. Install Chromium browser using either apt or [snap](https://tutorials.ubuntu.com/tutorial/basic-snap-usage#0) package manager.
     - The newer snap way: `sudo snap install chromium`
     - The apt way: `sudo apt install chromium-browser`
+
 **Note:** The method you choose to install chromium will determine the command/path you use in the scripts. Using the apt way = `chromium-browser` calls the browser; the snap way = `chromium` to call the browser. The scripts in this repo used the snap method - `/snap/bin/chromium`.
 
 3. Sign into a Google account so you are able to install extensions to Chromium from the Chrome Store.
