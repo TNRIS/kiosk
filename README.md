@@ -46,7 +46,7 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
     - Create startup app for clear-chromium-crash.sh bash script
       - choose 'Add'
       - type in Name = 'clear-chromium-crash' or similar
-      - command = path to clear-chromium-crash.sh bash script (should be `home/clear-chromium-crash.sh`)
+      - command = `/path/to/clear-chromium-crash.sh` bash script (should be `home/clear-chromium-crash.sh`)
 
 ### Cron & Bash
 All cron and bash system scripts are located in **/system-scripts** of this repo. On the kiosk itself, all system scripts are placed in the `/home` directory. The **clear-chromium-crash.sh** and **start-kiosk.sh** scripts are also added to Startup Applications in case the computer is intentionally shutdown, loses power, or is rebooted. **User Permissions**: To setup the cron task on the kiosk machine, root access is necessary to edit the crontab using the command `sudo crontab -e`. The sleep script also requires root privileges to run the `rtcwake` command. The sleep script runs, then switches to the regular admin user (in this case user is tnris) using `su` command before running `start-kiosk.sh`.
