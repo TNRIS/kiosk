@@ -42,7 +42,7 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
     - Create startup app for start-kiosk.sh bash script
       - choose 'Add'
       - type in Name = 'start-kiosk' or similar
-      - command = `/path/to/kiosk-crontab.bak` bash script (should be `home/start-kiosk.sh`)
+      - command = `/path/to/start-kiosk.sh` bash script (should be `home/start-kiosk.sh`)
     - Create startup app for clear-chromium-crash.sh bash script
       - choose 'Add'
       - type in Name = 'clear-chromium-crash' or similar
