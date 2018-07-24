@@ -6,7 +6,7 @@ This project is a simple static web application combined with a customized syste
 
 ![twdb kiosk](css/img/kiosk.jpg)
 
-The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Beaver operating system installed. Ubuntu 18 was chosen due to it working well out of the box with the kiosk touchscreen. Every day at 1830, a cron task (`/system-scripts/kiosk-crontab.bak`) kills Chromium and calls a Bash script called `sleep.sh`. The sleep script puts the machine to sleep for 12.5 hours, after which it will awaken, switch to user tnris, and call the `start-kiosk.sh` Bash script. This script runs Chromium with the necessary flags/switches needed for the kiosk (see below Cron & Bash section regarding the switches used with more detail). If the kiosk touchscreen is inactive for 15 minutes, a Chromium extension called Photo Screen Saver will show TWDB images stored on a cloud drive as a screen saver until a user interrupts it.
+The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Beaver operating system installed. Ubuntu 18 was chosen due to it working well out of the box with the kiosk touchscreen. Every day at 1830, a cron task (`/system-scripts/kiosk-crontab.bak`) kills Chromium and calls a Bash script called `sleep.sh`. The sleep script puts the machine to sleep for 12.5 hours, after which it will awaken, switch to user tnris, and call the `start-kiosk.sh` Bash script. This script runs Chromium with the necessary flags/switches needed for the kiosk (see below Cron & Bash section regarding the switches used with more detail). If the kiosk touchscreen is inactive for 13 minutes, a Chromium extension called Photo Screen Saver will show TWDB images stored on a cloud drive as a screen saver until a user interrupts it.
 
 ### Kiosk System Components
 * [Dell 9020 Micro](https://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/optiplex-9020-micro-technical-spec-sheet.pdf)
@@ -31,7 +31,7 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 
 4. Install the [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc) Chromium/Chrome extension from the Chrome Store.
     - In the extension setup, provide a Google Drive/Photos location of photos for the extension to use.
-    - Set the screen saver to start when idle for 15 minutes; also test transitions and animations in the settings if you desire. Set any other settings you need.
+    - Set the screen saver to start when idle for 13 minutes; also test transitions and animations in the settings if you desire. Set any other settings you need.
 
 5. Copy the system scripts `sleep.sh`, `start-kiosk.sh`, and `clear-chromium-crash.sh` into the `/home` directory.
 
