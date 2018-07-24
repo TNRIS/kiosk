@@ -36,13 +36,13 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 5. Copy the system scripts `sleep.sh`, `start-kiosk.sh`, and `clear-chromium-crash.sh` into the `/home` directory.
 
 6. Open terminal, run `sudo crontab -e`, specify which text editor you want to use (nano), paste the command that is in the `kiosk-crontab.bak` file (only the line that isn't commented out) into the crontab.
-    * Or, you can source directly from the backup file into the cron table:`sudo crontab < path/to/kiosk-crontab.bak`
+    * Or, you can source directly from the backup file into the cron table:`sudo crontab < /path/to/kiosk-crontab.bak`
 
 7. Open Ubuntu's Startup Applications Preferences (search Ubuntu dash using keyword 'startup').
     - Create startup app for start-kiosk.sh bash script
       - choose 'Add'
       - type in Name = 'start-kiosk' or similar
-      - command = path to start-kiosk.sh bash script (should be `home/start-kiosk.sh`)
+      - command = `/path/to/kiosk-crontab.bak` bash script (should be `home/start-kiosk.sh`)
     - Create startup app for clear-chromium-crash.sh bash script
       - choose 'Add'
       - type in Name = 'clear-chromium-crash' or similar
