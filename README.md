@@ -21,7 +21,7 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
     - Create a bootable USB stick with  [Windows](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows#0), [Mac](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-macos#0), or [Linux](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu#0).
     - [Install Ubuntu](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0)
 
-2. Install Chromium browser using either apt or [snap](https://tutorials.ubuntu.com/tutorial/basic-snap-usage#0) package manager.
+2. Install Chromium browser, if it's not already installed using either apt or [snap](https://tutorials.ubuntu.com/tutorial/basic-snap-usage#0) package manager.
     - The newer snap way: `sudo snap install chromium`
     - The apt way: `sudo apt install chromium-browser`
 
