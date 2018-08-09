@@ -57,7 +57,7 @@ Cron is a Linux utility that allows tasks to be automatically run in the backgro
 `30 18 * * * if pgrep chromium;then kill $(pgrep chromium);fi;/home/tnris/sleep.sh`
 
 **sleep.sh** <br>
-The sleep script tells the kiosk system to go to sleep for 12.5 hours, switches to user tnris (from root), then calls the `start-kiosk.sh` script.
+The sleep script tells the kiosk system to go to sleep for 12.5 hours (45000 seconds), wakes up, restarts the OS which then calls the `start-kiosk.sh` script from the startup application settings.
 ```
 # arbitrary time in order to give cron enough time to kill chromium, etc.
 sleep 7
@@ -68,8 +68,8 @@ sudo rtcwake -m freeze -l -s 45000
 # arbitrary time in order to give system enough time to wake properly
 sleep 5
 
-# Switch to user tnris and call the start-kiosk script to run Chromium
-su tnris -c "/home/tnris/start-kiosk.sh"
+# Restart kiosk on wake up
+sudo shutdown -r now
 ```
 **start-kiosk.sh** <br>
 Run Chromium with the necessary flags/switches and go to the kiosk address at http://kiosk.tnris.org. The switches which are necessary for the kiosk to properly run Chromium in kiosk mode are `--kiosk`. Additionally, to prevent users from losing navigation controls, disabling browser web-security with `--disable-web-security` and `--user-data-dir` is necessary. Disabling web-security allows the kiosk web app to bypass the [same-origin policy](https://en.wikipedia.org/wiki/Same-origin_policy) which prevents any web page from accessing data in another web page if they do not have the same origin/domain. This allows the kiosk app's javascript to modify the front end of the iframed applications so it can prevent a user from opening a new browser tab. Preventing new tabs is necessary because when the browser is in kiosk mode, traditional browser navigation is unavailable. The kiosk javascript searches the DOM every time an iframed application page is loaded to look for `<a>` tags with a target attribute present. If it finds that attribute, it removes it. This keeps all pages inside the iframe. This functionality even works for dynamically created content, such as with React.js, by rerunning the DOM search every time a user clicks in the app iframe.
