@@ -9,7 +9,7 @@ This project is a simple static web application combined with a customized syste
 The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Beaver operating system installed. Ubuntu 18 was chosen due to it working well out of the box with the kiosk touchscreen. Every day at 1830, a cron task (`/system-scripts/kiosk-crontab.bak`) kills Chromium and calls a Bash script called `sleep.sh`. The sleep script puts the machine to sleep for 12.5 hours, after which it will awaken, switch to user tnris, and call the `start-kiosk.sh` Bash script. This script runs Chromium with the necessary flags/switches needed for the kiosk (see below Cron & Bash section regarding the switches used with more detail). If the kiosk touchscreen is inactive for 13 minutes, a Chromium extension called Photo Screen Saver will show TWDB images stored on a cloud drive as a screen saver until a user interrupts it.
 
 ### Kiosk System Components
-* [Dell 9020 Micro](https://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/optiplex-9020-micro-technical-spec-sheet.pdf)
+* [Dell OptiPlex 9020 Micro PC](http://www.dell.com/ae/business/p/optiplex-9020m-desktop/pd)
 * [Ubuntu 18.04](http://releases.ubuntu.com/releases/18.04/)
 * [Chromium](https://www.chromium.org/Home)
 * [Bash](https://www.gnu.org/software/bash/)
