@@ -10,4 +10,4 @@ sudo rtcwake -m freeze -l -s 45000
 
 sleep 5
 
-su tnris -c "/home/tnris/start-kiosk.sh"
+sudo shutdown -r now
