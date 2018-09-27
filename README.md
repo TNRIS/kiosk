@@ -1,5 +1,5 @@
 # **kiosk**
-an app for viewing apps on a kiosk
+an app for viewing apps on a kiosk.
 
 ### Overview
 This project is a simple static web application combined with a customized system on the Texas Water Development Board's kiosk itself. The web app can be accessed by visiting the url http://kiosk.tnris.org and the content is hosted directly from this repository (repo) using GitHub Pages with a custom domain. The site was created specifically to be displayed on the agency's kiosk (see below photo) to act as a menu for viewing other existing TWDB web applications. Based on the user's selection from the kiosk menu, the kiosk app creates a window to that app using a dynamically created iframe while allowing the user to go back to the main menu from the bottom navigation bar. The bottom navigation bar is necessary due to the browser on the kiosk being in fullscreen, or kiosk mode. This means that the traditional browser navigation menu is absent. The url of the app the user selects from the main menu is displayed at the bottom right of the navigation bar. In case a user leaves the kiosk with an app or site open, the kiosk app reloads after 10 min of inactivity (clicks/touches) which will bring it back to the main menu.
