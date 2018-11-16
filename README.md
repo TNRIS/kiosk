@@ -16,16 +16,17 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 * [Cron](https://en.wikipedia.org/wiki/Cron)
 * [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc?hl=en-US)
 
-### Instructions for Kiosk Setup
+### Instructions for Kiosk Setup (*Note: these instructions are focused on Linux for kiosk setup and development, however, you can accomplish the same on Windows or Mac)
+
 1. Install Ubuntu v18.04 Bionic Beaver on the Kiosk machine.
     - Create a bootable USB stick with  [Windows](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows#0), [Mac](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-macos#0), or [Linux](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu#0).
     - [Install Ubuntu](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0)
 
-2. Install Chromium browser, if it's not already installed using either apt or [snap](https://tutorials.ubuntu.com/tutorial/basic-snap-usage#0) package manager.
+2. Install Chromium browser, if it's not already installed using either apt or [snap](https://tutorials.ubuntu.com/tutorial/basic-snap-usage#0) package manager - Linux.
     - The newer snap way: `sudo snap install chromium`
     - The apt way: `sudo apt install chromium-browser`
 
-**Note:** The method you choose to install chromium will determine the command/path you use in the scripts. Using the apt way = `chromium-browser` calls the browser; the snap way = `chromium` to call the browser. The scripts in this repo used the snap method - `/snap/bin/chromium`.
+**Note:** The method you choose to install chromium on Linux will determine the command/path you use in the scripts. Using the apt way = `chromium-browser` calls the browser; the snap way = `chromium` to call the browser. The scripts in this repo used the snap method - `/snap/bin/chromium`.
 
 3. Sign into a Google account so you are able to install extensions to Chromium from the Chrome Store.
 
@@ -33,7 +34,7 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
     - In the extension setup, provide a Google Drive/Photos location of photos for the extension to use.
     - Set the screen saver to start when idle for 13 minutes; also test transitions and animations in the settings if you desire. Set any other settings you need.
 
-5. Copy the system scripts `sleep.sh`, `start-kiosk.sh`, and `clear-chromium-crash.sh` into the `/home` directory.
+5. Copy the system scripts `sleep.sh`, `start-kiosk.sh`, and `clear-chromium-crash.sh` into the `/home` directory on the kiosk machine.
 
 6. Open terminal, run `sudo crontab -e`, specify which text editor you want to use (nano), paste the command that is in the `kiosk-crontab.bak` file (only the line that isn't commented out) into the crontab.
     * Or, you can source directly from the backup file into the cron table:`sudo crontab < /path/to/kiosk-crontab.bak`
