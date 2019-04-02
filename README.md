@@ -14,7 +14,7 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 * [Chromium](https://www.chromium.org/Home)
 * [Bash](https://www.gnu.org/software/bash/)
 * [Cron](https://en.wikipedia.org/wiki/Cron)
-* [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc?hl=en-US)
+* [~~Photo Screen Saver~~](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc?hl=en-US)
 
 ### Instructions for Kiosk Setup (*Note: these instructions are focused on Linux for kiosk setup and development, however, you can accomplish the same on Windows or Mac)
 
@@ -30,9 +30,9 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 
 3. Sign into a Google account so you are able to install extensions to Chromium from the Chrome Store.
 
-4. Install the [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc) Chromium/Chrome extension from the Chrome Store.
-    - In the extension setup, provide a Google Drive/Photos location of photos for the extension to use.
-    - Set the screen saver to start when idle for 13 minutes; also test transitions and animations in the settings if you desire. Set any other settings you need.
+4. *Needs updating for new [XScreenSaver method](https://www.jwz.org/xscreensaver/)* ~~Install the [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc) Chromium/Chrome extension from the Chrome Store.~~
+    - ~~In the extension setup, provide a Google Drive/Photos location of photos for the extension to use.~~
+    - ~~Set the screen saver to start when idle for 13 minutes; also test transitions and animations in the settings if you desire. Set any other settings you need.~~
 
 5. Copy the system scripts `sleep.sh`, `start-kiosk.sh`, and `clear-chromium-crash.sh` into the `/home` directory on the kiosk machine.
 
