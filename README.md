@@ -101,22 +101,22 @@ sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' snap/chromium/367/.config
 
 For local development / testing:
 * [node.js v8.11.1](https://nodejs.org/en/blog/release/v8.11.1/)
-* [http-server v0.11.1](https://www.npmjs.com/package/http-server)
+* [connect v3.6.6](https://www.npmjs.com/package/connect)
+* [serve-static v1.13.2](https://www.npmjs.com/package/serve-static)
 
 ### Instructions for Local Development Setup
-1. Install node.js v8.11.1 or the most recent release version is probably fine too. Download [here](https://nodejs.org/en/download/).
+1. Clone the TNRIS/kiosk repository with git using the command: `git clone https://github.com/TNRIS/kiosk.git`
 
-2. npm should be installed with node.js, so just run this command to install the http-server package:
+1. CD into the repo using the terminal `cd kiosk`
 
-    `npm install http-server -g`
+1. If you don't have it already, install node.js v8.11.1 or the most recent release version is probably fine too. Download [here](https://nodejs.org/en/download/).
 
-3. Clone the TNRIS/kiosk repository with git using the command: `git clone https://github.com/TNRIS/kiosk.git`
+2. npm should be installed with node.js, so just run the following commands to install packages and start dev server:
 
-4. CD into the repo using the terminal.
+    `npm install`
+    `npm start` (will be available at http://localhost:8080)
 
-5. Run the command `http-server` and a server running the app should now be viewable at http://localhost:8080.
-
-6. *** To view the app exactly as it is meant to run on the kiosk with web security disabled, open a new terminal window (make sure your server running the app at local port 8080 stays running) and type the command:
+6. *** To view the app exactly as it is meant to run on the kiosk with web security disabled, open a new terminal window (make sure the server is running the app at local port 8080) and type the command:
 
     `chromium-browser --disable-web-security --user-data-dir http://localhost:8080`.
 
