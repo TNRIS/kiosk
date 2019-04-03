@@ -111,12 +111,13 @@ For local development / testing:
 
 1. If you don't have it already, install node.js v8.11.1 or the most recent release version is probably fine too. Download [here](https://nodejs.org/en/download/).
 
-2. npm should be installed with node.js, so just run the following commands to install packages and start dev server:
+1. npm should be installed with node.js, so just run the following commands to install packages and start dev server:
 
     `npm install`
+    
     `npm start` (will be available at http://localhost:8080)
 
-6. *** To view the app exactly as it is meant to run on the kiosk with web security disabled, open a new terminal window (make sure the server is running the app at local port 8080) and type the command:
+1. *** To view the app exactly as it is meant to run on the kiosk with web security disabled, open a new terminal window (make sure the server is running the app at local port 8080) and type the command:
 
     `chromium-browser --disable-web-security --user-data-dir http://localhost:8080`.
 
