@@ -1,0 +1,28 @@
+{
+  "name": "kiosk",
+  "version": "1.0.0",
+  "description": "an app for viewing apps on a kiosk",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo 'welcome to the kiosk app. the dev server is starting...' && node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TNRIS/kiosk.git"
+  },
+  "keywords": [
+    "kiosk",
+    "js",
+    "tnris"
+  ],
+  "author": "john haney",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TNRIS/kiosk/issues"
+  },
+  "homepage": "https://github.com/TNRIS/kiosk#readme",
+  "devDependencies": {
+    "connect": "^3.6.6",
+    "serve-static": "^1.13.2"
+  }
+}

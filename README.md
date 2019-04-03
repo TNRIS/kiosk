@@ -14,7 +14,7 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 * [Chromium](https://www.chromium.org/Home)
 * [Bash](https://www.gnu.org/software/bash/)
 * [Cron](https://en.wikipedia.org/wiki/Cron)
-* [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc?hl=en-US)
+* [~~Photo Screen Saver~~](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc?hl=en-US)
 
 ### Instructions for Kiosk Setup (*Note: these instructions are focused on Linux for kiosk setup and development, however, you can accomplish the same on Windows or Mac)
 
@@ -30,9 +30,9 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 
 3. Sign into a Google account so you are able to install extensions to Chromium from the Chrome Store.
 
-4. Install the [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc) Chromium/Chrome extension from the Chrome Store.
-    - In the extension setup, provide a Google Drive/Photos location of photos for the extension to use.
-    - Set the screen saver to start when idle for 13 minutes; also test transitions and animations in the settings if you desire. Set any other settings you need.
+4. *Needs updating for new [XScreenSaver method](https://www.jwz.org/xscreensaver/)* ~~Install the [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc) Chromium/Chrome extension from the Chrome Store.~~
+    - ~~In the extension setup, provide a Google Drive/Photos location of photos for the extension to use.~~
+    - ~~Set the screen saver to start when idle for 13 minutes; also test transitions and animations in the settings if you desire. Set any other settings you need.~~
 
 5. Copy the system scripts `sleep.sh`, `start-kiosk.sh`, and `clear-chromium-crash.sh` into the `/home` directory on the kiosk machine.
 
@@ -101,22 +101,23 @@ sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' snap/chromium/367/.config
 
 For local development / testing:
 * [node.js v8.11.1](https://nodejs.org/en/blog/release/v8.11.1/)
-* [http-server v0.11.1](https://www.npmjs.com/package/http-server)
+* [connect v3.6.6](https://www.npmjs.com/package/connect)
+* [serve-static v1.13.2](https://www.npmjs.com/package/serve-static)
 
 ### Instructions for Local Development Setup
-1. Install node.js v8.11.1 or the most recent release version is probably fine too. Download [here](https://nodejs.org/en/download/).
+1. Clone the TNRIS/kiosk repository with git using the command: `git clone https://github.com/TNRIS/kiosk.git`
 
-2. npm should be installed with node.js, so just run this command to install the http-server package:
+1. CD into the repo using the terminal `cd kiosk`
 
-    `npm install http-server -g`
+1. If you don't have it already, install node.js v8.11.1 or the most recent release version is probably fine too. Download [here](https://nodejs.org/en/download/).
 
-3. Clone the TNRIS/kiosk repository with git using the command: `git clone https://github.com/TNRIS/kiosk.git`
+1. npm should be installed with node.js, so just run the following commands to install packages and start dev server:
 
-4. CD into the repo using the terminal.
+    `npm install`
+    
+    `npm start` (will be available at http://localhost:8080)
 
-5. Run the command `http-server` and a server running the app should now be viewable at http://localhost:8080.
-
-6. *** To view the app exactly as it is meant to run on the kiosk with web security disabled, open a new terminal window (make sure your server running the app at local port 8080 stays running) and type the command:
+1. *** To view the app exactly as it is meant to run on the kiosk with web security disabled, open a new terminal window (make sure the server is running the app at local port 8080) and type the command:
 
     `chromium-browser --disable-web-security --user-data-dir http://localhost:8080`.
 
