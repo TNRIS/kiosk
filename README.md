@@ -6,7 +6,7 @@ This project is a simple static web application combined with a customized syste
 
 ![twdb kiosk](css/img/kiosk.jpg)
 
-The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Beaver operating system installed. Ubuntu 18 was chosen due to it working well out of the box with the kiosk touchscreen. Every day at 1830, a cron task (`/system-scripts/kiosk-crontab.bak`) kills Chromium and calls a Bash script called `sleep.sh`. The sleep script puts the machine to sleep for 12.5 hours, after which it will awaken, switch to user tnris, and call the `start-kiosk.sh` Bash script. This script runs Chromium with the necessary flags/switches needed for the kiosk (see below Cron & Bash section regarding the switches used with more detail). If the kiosk touchscreen is inactive for 13 minutes, a Chromium extension called Photo Screen Saver will show TWDB images stored on a cloud drive as a screen saver until a user interrupts it.
+The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Beaver operating system installed. Ubuntu 18 was chosen due to it working well out of the box with the kiosk touchscreen. Every day at 1830, a cron task (`/system-scripts/kiosk-crontab.bak`) kills Chromium and calls a Bash script called `sleep.sh`. The sleep script puts the machine to sleep for 12.5 hours, after which it will awaken, switch to user tnris, and call the `start-kiosk.sh` Bash script. This script runs Chromium with the necessary flags/switches needed for the kiosk (see below Cron & Bash section regarding the switches used with more detail). If the kiosk touchscreen is inactive for 13 minutes, ~~a Chromium extension called Photo Screen Saver~~ an application called [XScreenSaver](https://www.jwz.org/xscreensaver/) will display TWDB images stored on the machine as a screen saver until a user interrupts it.
 
 ### Kiosk System Components
 * [Dell OptiPlex 9020 Micro PC](http://www.dell.com/ae/business/p/optiplex-9020m-desktop/pd)
@@ -15,6 +15,7 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 * [Bash](https://www.gnu.org/software/bash/)
 * [Cron](https://en.wikipedia.org/wiki/Cron)
 * [~~Photo Screen Saver~~](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc?hl=en-US)
+* [XScreenSaver](https://www.jwz.org/xscreensaver/)
 
 ### Instructions for Kiosk Setup (*Note: these instructions are focused on Linux for kiosk setup and development, however, you can accomplish the same on Windows or Mac)
 
@@ -22,24 +23,29 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
     - Create a bootable USB stick with  [Windows](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows#0), [Mac](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-macos#0), or [Linux](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu#0).
     - [Install Ubuntu](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0)
 
-2. Install Chromium browser, if it's not already installed using either apt or [snap](https://tutorials.ubuntu.com/tutorial/basic-snap-usage#0) package manager - Linux.
+1. Install Chromium browser, if it's not already installed using either apt or [snap](https://tutorials.ubuntu.com/tutorial/basic-snap-usage#0) package manager - Linux.
     - The newer snap way: `sudo snap install chromium`
     - The apt way: `sudo apt install chromium-browser`
 
 **Note:** The method you choose to install chromium on Linux will determine the command/path you use in the scripts. Using the apt way = `chromium-browser` calls the browser; the snap way = `chromium` to call the browser. The scripts in this repo used the snap method - `/snap/bin/chromium`.
 
-3. Sign into a Google account so you are able to install extensions to Chromium from the Chrome Store.
 
-4. *Needs updating for new [XScreenSaver method](https://www.jwz.org/xscreensaver/)* ~~Install the [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc) Chromium/Chrome extension from the Chrome Store.~~
+1. Install [XScreenSaver](https://www.jwz.org/xscreensaver/) from the terminal:
+
+  `sudo apt install xscreensaver xscreensaver-demo`
+
+  visit the FAQ at the XScreenSaver website to follow [the directions](https://www.jwz.org/xscreensaver/faq.html#slideshow) to set it up to use a directory of images.
+
+  ~~Install the [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc) Chromium/Chrome extension from the Chrome Store.~~
     - ~~In the extension setup, provide a Google Drive/Photos location of photos for the extension to use.~~
     - ~~Set the screen saver to start when idle for 13 minutes; also test transitions and animations in the settings if you desire. Set any other settings you need.~~
 
-5. Copy the system scripts `sleep.sh`, `start-kiosk.sh`, and `clear-chromium-crash.sh` into the `/home` directory on the kiosk machine.
+1. Copy the system scripts `sleep.sh`, `start-kiosk.sh`, and `clear-chromium-crash.sh` into the `/home` directory on the kiosk machine.
 
-6. Open terminal, run `sudo crontab -e`, specify which text editor you want to use (nano), paste the command that is in the `kiosk-crontab.bak` file (only the line that isn't commented out) into the crontab.
+1. Open terminal, run `sudo crontab -e`, specify which text editor you want to use (nano), paste the command that is in the `kiosk-crontab.bak` file (only the line that isn't commented out) into the crontab.
     * Or, you can source directly from the backup file into the cron table:`sudo crontab < /path/to/kiosk-crontab.bak`
 
-7. Open Ubuntu's Startup Applications Preferences (search Ubuntu dash using keyword 'startup').
+1. Open Ubuntu's Startup Applications Preferences (search Ubuntu dash using keyword 'startup').
     - Create startup app for start-kiosk.sh bash script
       - choose 'Add'
       - type in Name = 'start-kiosk' or similar
@@ -114,7 +120,7 @@ For local development / testing:
 1. npm should be installed with node.js, so just run the following commands to install packages and start dev server:
 
     `npm install`
-    
+
     `npm start` (will be available at http://localhost:8080)
 
 1. *** To view the app exactly as it is meant to run on the kiosk with web security disabled, open a new terminal window (make sure the server is running the app at local port 8080) and type the command:
