@@ -6,7 +6,7 @@ This project is a simple static web application combined with a customized syste
 
 ![twdb kiosk](css/img/kiosk.jpg)
 
-The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Beaver operating system installed. Ubuntu 18 was chosen due to it working well out of the box with the kiosk touchscreen. Every day at 1830, a cron task (`/system-scripts/kiosk-crontab.bak`) kills Chromium and calls a Bash script called `sleep.sh`. The sleep script puts the machine to sleep for 12.5 hours, after which it will awaken, switch to user tnris, and call the `start-kiosk.sh` Bash script. This script runs Chromium with the necessary flags/switches needed for the kiosk (see below Cron & Bash section regarding the switches used with more detail). If the kiosk touchscreen is inactive for 13 minutes, ~~a Chromium extension called Photo Screen Saver~~ an application called [XScreenSaver](https://www.jwz.org/xscreensaver/) will display TWDB images stored on the machine as a screen saver until a user interrupts it.
+The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Beaver operating system installed. Ubuntu 18 was chosen due to it working well out of the box with the kiosk touchscreen. Every day at 1830, a cron task (`/system-scripts/kiosk-crontab.bak`) kills Chromium and calls a Bash script called `sleep.sh`. The sleep script puts the machine to sleep for 12.5 hours, after which it will awaken, switch to user tnris, and call the `start-kiosk.sh` Bash script. This script runs Chromium with the necessary flags/switches needed for the kiosk (see below Cron & Bash section regarding the switches used with more detail). If the kiosk touchscreen is inactive for 13 minutes, an application called [XScreenSaver](https://www.jwz.org/xscreensaver/) will display TWDB images stored on the machine as a screen saver until a user interrupts it.
 
 ### Kiosk System Components
 * [Dell OptiPlex 9020 Micro PC](http://www.dell.com/ae/business/p/optiplex-9020m-desktop/pd)
@@ -14,7 +14,6 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 * [Chromium](https://www.chromium.org/Home)
 * [Bash](https://www.gnu.org/software/bash/)
 * [Cron](https://en.wikipedia.org/wiki/Cron)
-* [~~Photo Screen Saver~~](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc?hl=en-US)
 * [XScreenSaver](https://www.jwz.org/xscreensaver/)
 
 ### Instructions for Kiosk Setup (*Note: these instructions are focused on Linux for kiosk setup and development, however, you can accomplish the same on Windows or Mac)
@@ -29,16 +28,7 @@ The kiosk hardware consists of a small Dell computer with Ubuntu 18.04 Bionic Be
 
 **Note:** The method you choose to install chromium on Linux will determine the command/path you use in the scripts. Using the apt way = `chromium-browser` calls the browser; the snap way = `chromium` to call the browser. The scripts in this repo used the snap method - `/snap/bin/chromium`.
 
-
-1. Install [XScreenSaver](https://www.jwz.org/xscreensaver/) from the terminal:
-
-  `sudo apt install xscreensaver xscreensaver-demo`
-
-  visit the FAQ at the XScreenSaver website to follow [the directions](https://www.jwz.org/xscreensaver/faq.html#slideshow) to set it up to use a directory of images.
-
-  ~~Install the [Photo Screen Saver](https://chrome.google.com/webstore/detail/photo-screen-saver/kohpcmlfdjfdggcjmjhhbcbankgmppgc) Chromium/Chrome extension from the Chrome Store.~~
-    - ~~In the extension setup, provide a Google Drive/Photos location of photos for the extension to use.~~
-    - ~~Set the screen saver to start when idle for 13 minutes; also test transitions and animations in the settings if you desire. Set any other settings you need.~~
+3. Install [XScreenSaver](https://www.jwz.org/xscreensaver/). From the terminal run `sudo apt install xscreensaver xscreensaver-demo` then visit the FAQ at the XScreenSaver website to follow [the directions](https://www.jwz.org/xscreensaver/faq.html#slideshow) to set it up to use a directory of images.
 
 1. Copy the system scripts `sleep.sh`, `start-kiosk.sh`, and `clear-chromium-crash.sh` into the `/home` directory on the kiosk machine.
 
